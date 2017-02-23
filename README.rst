@@ -1,8 +1,9 @@
-# nifti2gif
+nifti2gif
+---------
 Simple script to transform 3D nifti files to fancy gifs!
 
-# Installation
-
+Installation
+~~~~~~~~~~~~
 Unfortunately, no pip-install (through pypi) possible (yet), but you can
 install it using pip from the Github repo directly:
 
@@ -12,19 +13,18 @@ Or, alternatively, download the package as a zip-file from Github, unzip, and ru
 
 	$ python setup.py install
 
-# Usage
+Usage
+~~~~~
 
-nifti2gif [-h] -f FILE [-d DIRECTION] [-s SCALE] [-k SKIP] [-t TRIM]
-          [-r REORIENT] [-b BET] [-F BET_F] [-g GIFNAME] [-D DELAY]
-          [-l LOOP] [-n N_PROC]
+    $ nifti2gif [-h] -f FILE [-d DIRECTION] [-s SCALE] [-k SKIP] [-t TRIM]
+    [-r REORIENT] [-b BET] [-F BET_F] [-g GIFNAME] [-D DELAY]
+    [-l LOOP] [-n N_PROC]
 
 optional arguments:
   -h, --help            show this help message and exit
   -f FILE, --file FILE  Filename of nifti to process.
-  -d DIRECTION, --direction DIRECTION
-                        Direction (orientation) of gif-movie
-  -s SCALE, --scale SCALE
-                        Scale ("size") of gif-image
+  -d DIRECTION, --direction DIRECTION   Direction (orientation) of gif-movie
+  -s SCALE, --scale SCALE   Scale ("size") of gif-image
   -k SKIP, --skip SKIP  How many slices to skip from beginning
   -t TRIM, --trim TRIM  How many slices to trim from the end
   -r REORIENT, --reorient REORIENT
