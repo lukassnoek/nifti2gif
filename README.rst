@@ -2,6 +2,15 @@ nifti2gif
 ---------
 Simple script to transform 3D nifti files to fancy gifs!
 
+Dependencies
+~~~~~~~~~~~~
+This package depends on the following Python packages:
+- nibabel
+- joblib (for parallel processing)
+
+Optionally, to use the reorientation and skullstripping functionality, make
+sure FSL is installed.
+
 Installation
 ~~~~~~~~~~~~
 Unfortunately, no pip-install (through pypi) possible (yet), but you can
