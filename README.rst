@@ -51,6 +51,6 @@ Optional arguments are:
                         How to name the gif-file
   -D DELAY, --delay DELAY
                         The delay (in ms) of the images in the gif
-  -l LOOP, --loop LOOP How many times to loop the gif (default is infite)
+  -l LOOP, --loop LOOP How many times to loop the gif
   -n N_PROC, --n_proc N_PROC
                         How many cpus (processes) to use
