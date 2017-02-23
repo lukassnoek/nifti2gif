@@ -1,0 +1,76 @@
+#!/usr/bin/env python
+
+import argparse
+import os
+import os.path as op
+from nifti2gif import convert_nifti_to_gif
+
+DESC = ("This is a command line tool to make "
+        "gifs from 3D nifti files.")
+
+parser = argparse.ArgumentParser(description=DESC)
+
+parser.add_argument('-f', '--file',
+                    help='Filename of nifti to process.',
+                    required=True)
+
+parser.add_argument('-d', '--direction',
+                    help='Direction (orientation) of gif-movie',
+                    required=False,
+                    default='x')
+
+parser.add_argument('-s', '--scale',
+                    help='Scale ("size") of gif-image',
+                    required=False,
+                    default=1)
+
+parser.add_argument('-k', '--skip',
+                    help='How many slices to skip from beginning',
+                    required=False,
+                    default=0)
+
+parser.add_argument('-t', '--trim',
+                    help='How many slices to trim from the end',
+                    required=False,
+                    default=0)
+
+parser.add_argument('-r', '--reorient',
+                    help='Whether to run reorient2std (FSL)',
+                    required=False,
+                    default=False)
+
+parser.add_argument('-b', '--bet',
+                    help='Whether to run bet (FSL)',
+                    required=False,
+                    default=False)
+
+parser.add_argument('-F', '--bet_f',
+                    help='What fractional intensity (bet option) to use',
+                    required=False,
+                    default=0.4)
+
+parser.add_argument('-g', '--gifname',
+                    help='How to name the gif-file',
+                    required=False,
+                    default=None)
+
+parser.add_argument('-D', '--delay',
+                    help='The delay (in ms) of the images in the gif',
+                    required=False,
+                    default=10)
+
+parser.add_argument('-l', '--loop',
+                    help='How many times to loop the gif (default is infite)',
+                    required=False,
+                    default=0)
+
+parser.add_argument('-n', '--n_proc',
+                    help='How many cpus (processes) to use',
+                    required=False,
+                    default=-1)
+
+args = parser.parse_args()
+
+convert_nifti_to_gif(args.file, args.direction, args.scale, args.skip,
+                     args.trim, args.reorient, args.bet, args.bet_f,
+                     args.gifname, args.delay, args.loop, args.n_proc)
