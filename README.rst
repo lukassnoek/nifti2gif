@@ -39,20 +39,18 @@ Optional arguments are:
   -h, --help    show this help message and exit
   -f FILE, --file FILE  Filename of nifti to process.
   -d DIRECTION, --direction DIRECTION   Direction (orientation) of gif-movie
-  					(default: x/saggital)
   -s SCALE, --scale SCALE   Scale ("size") of gif-image
-  			    (default: 1, i.e. no scaling)
-  -k SKIP, --skip SKIP  How many slices to skip from beginning (default: 0)
-  -t TRIM, --trim TRIM  How many slices to trim from the end (default: 0)
-  -r REORIENT, --reorient REORIENT (default: False)
+  -k SKIP, --skip SKIP  How many slices to skip from beginning
+  -t TRIM, --trim TRIM  How many slices to trim from the end
+  -r REORIENT, --reorient REORIENT
                         Whether to run reorient2std (FSL)
-  -b BET, --bet BET     Whether to run bet (FSL) (default: False)
-  -F BET_F, --bet_f BET_F (default: 0.4)
+  -b BET, --bet BET     Whether to run bet (FSL)
+  -F BET_F, --bet_f BET_F
                         What fractional intensity (bet option) to use
-  -g GIFNAME, --gifname GIFNAME (default: {filename}_direction_{x/y/z}.gif
+  -g GIFNAME, --gifname GIFNAME
                         How to name the gif-file
-  -D DELAY, --delay DELAY (default: 10)
+  -D DELAY, --delay DELAY
                         The delay (in ms) of the images in the gif
-  -l LOOP, --loop LOOP (default: 0)  How many times to loop the gif (default is infite)
-  -n N_PROC, --n_proc N_PROC (default: 1)
+  -l LOOP, --loop LOOP How many times to loop the gif (default is infite)
+  -n N_PROC, --n_proc N_PROC
                         How many cpus (processes) to use
