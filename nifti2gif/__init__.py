@@ -1,3 +1,4 @@
+from __future__ import print_function
 import nibabel as nib
 import os
 from glob import glob
@@ -56,8 +57,9 @@ def convert_nifti_to_gif(fname, direction='x', scale=1, skip=0, trim=0,
     if reorient:
         new_name = os.path.join(dir_name, '%s_reoriented.nii.gz' % base_name)
         if not os.path.isfile(new_name):
+            print("Performing fslreorient2std ... ", end="")
             os.system('fslreorient2std %s %s' % (fname, new_name))
-
+            print("done.")
         fname = new_name
 
     if bet:
@@ -65,21 +67,25 @@ def convert_nifti_to_gif(fname, direction='x', scale=1, skip=0, trim=0,
         new_name = os.path.join(dir_name, '%s_betted.nii.gz' % base_name)
 
         if not os.path.isfile(new_name):
+            print("Performing FSL bet ... ", end="")
             os.system('bet %s %s -f %.2f -R' % (fname, new_name, bet_F))
-
+            print("done.")
         fname = new_name
 
+    print("Starting nifti to .png conversion ... ", end="")
     stat = Parallel(n_jobs=n_proc)(delayed(_process_parallel)(
            fname, islice, scale, direction, dir_name) for islice in slice_set)
 
     if gifname is None:
         gifname = '%s_direction_%s' % (base_name, direction)
 
+    print("done.")
+    print("Converting png-files to gif ... ", end="")
     _ = os.system('convert -delay %i -loop %i %s %s.gif' %
                   (delay, loop, os.path.join(dir_name, '*.png'),
                    os.path.join(dir_name, gifname)))
     _ = [os.remove(f) for f in glob(os.path.join(dir_name, '*png'))]
-
+    print("done.")
 
 def _process_parallel(fname, slice, scale, direction, dir_name):
     """ Processes slices in parallel. """

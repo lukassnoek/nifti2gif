@@ -12,62 +12,62 @@ parser = argparse.ArgumentParser(description=DESC)
 
 parser.add_argument('-f', '--file',
                     help='Filename of nifti to process.',
-                    required=True)
+                    required=True, type=str)
 
 parser.add_argument('-d', '--direction',
                     help='Direction (orientation) of gif-movie',
                     required=False,
-                    default='x')
+                    default='x', type=str)
 
 parser.add_argument('-s', '--scale',
                     help='Scale ("size") of gif-image',
                     required=False,
-                    default=1)
+                    default=1, type=float)
 
 parser.add_argument('-k', '--skip',
                     help='How many slices to skip from beginning',
                     required=False,
-                    default=0)
+                    default=0, type=int)
 
 parser.add_argument('-t', '--trim',
                     help='How many slices to trim from the end',
                     required=False,
-                    default=0)
+                    default=0, type=int)
 
 parser.add_argument('-r', '--reorient',
                     help='Whether to run reorient2std (FSL)',
                     required=False,
-                    default=False)
+                    default=False, type=bool)
 
 parser.add_argument('-b', '--bet',
                     help='Whether to run bet (FSL)',
                     required=False,
-                    default=False)
+                    default=False, type=bool)
 
 parser.add_argument('-F', '--bet_f',
                     help='What fractional intensity (bet option) to use',
                     required=False,
-                    default=0.4)
+                    default=0.4, type=float)
 
 parser.add_argument('-g', '--gifname',
                     help='How to name the gif-file',
                     required=False,
-                    default=None)
+                    default=None, type=str)
 
 parser.add_argument('-D', '--delay',
                     help='The delay (in ms) of the images in the gif',
                     required=False,
-                    default=10)
+                    default=10, type=int)
 
 parser.add_argument('-l', '--loop',
                     help='How many times to loop the gif (default is infite)',
                     required=False,
-                    default=0)
+                    default=0, type=int)
 
 parser.add_argument('-n', '--n_proc',
                     help='How many cpus (processes) to use',
                     required=False,
-                    default=-1)
+                    default=-1, type=int)
 
 args = parser.parse_args()
 
