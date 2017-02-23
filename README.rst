@@ -38,9 +38,10 @@ The only mandatory argument is the filename (-f flag), so this is nifti2gif's ba
 Optional arguments are:
   -h, --help    show this help message and exit
   -f FILE, --file FILE  Filename of nifti to process.
-  -d DIRECTION, --direction DIRECTION   Direction (orientation) of gif-movie;
-  					default: x-direction/saggital
-  -s SCALE, --scale SCALE   Scale ("size") of gif-image (default: 1, i.e. no scaling)
+  -d DIRECTION, --direction DIRECTION   Direction (orientation) of gif-movie
+  					(default: x/saggital)
+  -s SCALE, --scale SCALE   Scale ("size") of gif-image
+  			    (default: 1, i.e. no scaling)
   -k SKIP, --skip SKIP  How many slices to skip from beginning (default: 0)
   -t TRIM, --trim TRIM  How many slices to trim from the end (default: 0)
   -r REORIENT, --reorient REORIENT (default: False)
