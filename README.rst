@@ -5,6 +5,7 @@ Simple script to transform 3D nifti files to fancy gifs!
 Dependencies
 ~~~~~~~~~~~~
 This package depends on the following Python packages:
+
 - nibabel
 - joblib (for parallel processing)
 
