@@ -7,10 +7,11 @@ Dependencies
 This package depends on the following Python packages:
 
 - nibabel
-- joblib (for parallel processing)
+- joblib (optional; for parallel processing)
 
+Also, it uses Imagemagick's `convert` command to make the gifs from the individual png-images.
 Optionally, to use the reorientation and skullstripping functionality, make
-sure FSL is installed.
+sure FSL is installed (and the BET and reorient2std are listed in the PATH).
 
 Installation
 ~~~~~~~~~~~~
