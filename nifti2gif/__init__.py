@@ -2,7 +2,12 @@ from __future__ import print_function
 import nibabel as nib
 import os
 from glob import glob
-from joblib import delayed, Parallel
+
+try:
+    from joblib import delayed, Parallel
+    parallel = True
+except ImportError:
+    parallel = False
 
 __version__ = '0.1'
 
@@ -73,8 +78,13 @@ def convert_nifti_to_gif(fname, direction='x', scale=1, skip=0, trim=0,
         fname = new_name
 
     print("Starting nifti to .png conversion ... ", end="")
-    stat = Parallel(n_jobs=n_proc)(delayed(_process_parallel)(
-           fname, islice, scale, direction, dir_name) for islice in slice_set)
+
+    if parallel:
+        stat = Parallel(n_jobs=n_proc)(delayed(_process_parallel)(
+               fname, islice, scale, direction, dir_name) for islice in slice_set)
+    else:
+        stat = [_process_parallel(fname, islice, scale, direction, dir_name)
+                for islice in slice_set]
 
     if gifname is None:
         gifname = '%s_direction_%s' % (base_name, direction)
@@ -86,6 +96,7 @@ def convert_nifti_to_gif(fname, direction='x', scale=1, skip=0, trim=0,
                    os.path.join(dir_name, gifname)))
     _ = [os.remove(f) for f in glob(os.path.join(dir_name, '*png'))]
     print("done.")
+
 
 def _process_parallel(fname, slice, scale, direction, dir_name):
     """ Processes slices in parallel. """
