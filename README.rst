@@ -1,16 +1,18 @@
 nifti2gif
 ---------
-Simple script to transform 3D nifti files to fancy gifs!
+Simple script to transform 3D nifti files to fancy gifs! Only works on Mac and Linux.
 
 Dependencies
 ~~~~~~~~~~~~
-This package depends on the following Python packages:
+This package uses the open-source Imagemagick software to convert nifti-files to
+png-files and subsequently merges these into a gif. Without this software installed on your
+system, ``nifti2gif`` won't work. This package moreover depends on the following Python packages:
 
 - nibabel
-- joblib (for parallel processing)
+- joblib (optional; for parallel processing)
 
 Optionally, to use the reorientation and skullstripping functionality, make
-sure FSL is installed.
+sure FSL is installed (and the BET and reorient2std are listed in the PATH).
 
 Installation
 ~~~~~~~~~~~~
@@ -31,7 +33,11 @@ Use the command-line interface as follows::
     [-r REORIENT] [-b BET] [-F BET_F] [-g GIFNAME] [-D DELAY]
     [-l LOOP] [-n N_PROC]
 
-optional arguments:
+The only mandatory argument is the filename (-f flag), so this is nifti2gif's basic usage::
+
+    $ nifti2gif -f my_nifti_file.nii.gz
+
+Optional arguments are:
   -h, --help    show this help message and exit
   -f FILE, --file FILE  Filename of nifti to process.
   -d DIRECTION, --direction DIRECTION   Direction (orientation) of gif-movie
@@ -47,6 +53,7 @@ optional arguments:
                         How to name the gif-file
   -D DELAY, --delay DELAY
                         The delay (in ms) of the images in the gif
-  -l LOOP, --loop LOOP  How many times to loop the gif (default is infite)
+  -l LOOP, --loop LOOP
+  			How many times to loop the gif
   -n N_PROC, --n_proc N_PROC
-                        How many cpus (processes) to use
+  			How many cpus (processes) to use
