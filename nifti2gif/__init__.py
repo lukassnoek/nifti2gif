@@ -109,7 +109,7 @@ def _process_parallel(fname, slice, scale, direction, dir_name):
         outnr = str(slice + 1)
 
     out_name = os.path.join(dir_name, 'out_%s.png' % outnr)
-    cmd = 'slicer %s -%s -%i %s -s %.2f' % (fname, direction, (slice + 1),
-                                            out_name, scale)
+    cmd = 'slicer %s -s %.2f -%s -%i %s ' % (fname, scale, direction, (slice + 1),
+                                            out_name)
     status = os.system(cmd)
     return status
